@@ -8,6 +8,8 @@ import (
 
 type FilmHandler interface {
 	GetFilms(w http.ResponseWriter, r *http.Request)
+	GetFilmByID(w http.ResponseWriter, r *http.Request)
+	GetFilmReviews(w http.ResponseWriter, r *http.Request)
 }
 
 type filmHandler struct {

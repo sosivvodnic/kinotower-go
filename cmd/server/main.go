@@ -1,10 +1,10 @@
 package main
 
 import (
+	_ "github.com/lib/pq"
 	core_database "github.com/sosivvodnic/kinotower-go/internal/core/database"
 	core_logger "github.com/sosivvodnic/kinotower-go/internal/core/logger"
 	core_server "github.com/sosivvodnic/kinotower-go/internal/core/server"
-	_ "github.com/lib/pq"
 
 	"github.com/joho/godotenv"
 )

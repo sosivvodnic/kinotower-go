@@ -1,12 +1,17 @@
 package film_service
 
 import (
+	"context"
+
 	"github.com/sosivvodnic/kinotower-go/internal/features/films/domain"
 	film_repository "github.com/sosivvodnic/kinotower-go/internal/features/films/repository"
 )
 
 type FilmService interface {
-	GetFilms() ([]domain.Film, error)
+	GetFilms(ctx context.Context, f domain.FilmFilter) ([]domain.Film, int, error)
+	GetFilmByID(ctx context.Context, id int) (*domain.Film, error)
+	GetApprovedReviewsByFilmID(ctx context.Context, filmID int) ([]domain.Review, error)
+	FilmExists(ctx context.Context, filmID int) (bool, error)
 }
 
 type filmService struct {

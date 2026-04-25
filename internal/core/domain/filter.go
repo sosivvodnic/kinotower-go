@@ -1,14 +1,14 @@
 package domain
 
 type Filter struct {
-	Page     int    
-	Size     int    
-	SortBy   string 
-	SortDir  string 
-	GenreID  int    
-	CountryID int   
+	Page       int
+	Size       int
+	SortBy     string
+	SortDir    string
+	GenreID    int
+	CountryID  int
 	CategoryID int
-	Search   string 
+	Search     string
 }
 
 func (f *Filter) Limit() int {

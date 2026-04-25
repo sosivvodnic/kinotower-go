@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/sosivvodnic/kinotower-go/internal/core/logger"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/sosivvodnic/kinotower-go/internal/core/logger"
 )
 
 func RequestLogger(next http.Handler) http.Handler {

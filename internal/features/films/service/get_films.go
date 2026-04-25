@@ -1,7 +1,11 @@
 package film_service
 
-import "github.com/sosivvodnic/kinotower-go/internal/features/films/domain"
+import (
+	"context"
 
-func (s *filmService) GetFilms() ([]domain.Film, error) {
-	return []domain.Film{}, nil
+	"github.com/sosivvodnic/kinotower-go/internal/features/films/domain"
+)
+
+func (s *filmService) GetFilms(ctx context.Context, f domain.FilmFilter) ([]domain.Film, int, error) {
+	return s.filmRepository.GetFilms(ctx, f)
 }

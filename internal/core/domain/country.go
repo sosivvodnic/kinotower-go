@@ -1,6 +1,6 @@
 package domain
 
 type Country struct {
-	ID int
+	ID   int
 	Name string
 }
