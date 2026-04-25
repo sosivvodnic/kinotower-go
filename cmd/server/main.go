@@ -1,16 +1,32 @@
 package main
 
 import (
-	"log/slog"
-
+	core_database "github.com/Otvetov/kinotower-go/internal/core/database"
+	core_logger "github.com/Otvetov/kinotower-go/internal/core/logger"
 	core_server "github.com/Otvetov/kinotower-go/internal/core/server"
+	_ "github.com/lib/pq"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	slog.Info("Starting server...")
+	// Load .env file
+	_ = godotenv.Load()
 
-	server := core_server.NewServer()
+	if err := core_logger.Init("logs"); err != nil {
+		panic("failed to init logger: " + err.Error())
+	}
+	db, err := core_database.NewDatabase()
+	if err != nil {
+		core_logger.Log.Error("Failed to connect to database", "error", err)
+		return
+	}
+	defer db.Close()
+	core_logger.Log.Info("Starting server", "addr", ":8080")
+
+	server := core_server.NewServer(*db)
+
 	if err := server.ListenAndServe(); err != nil {
-		slog.Error("Server error", "error", err)
+		core_logger.Log.Error("Server stopped", "error", err)
 	}
 }

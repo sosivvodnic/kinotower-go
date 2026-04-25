@@ -1,0 +1,14 @@
+-- Rollback for 000002_init.up.sql
+
+BEGIN;
+
+DROP TABLE IF EXISTS ratings;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS categories_films;
+DROP TABLE IF EXISTS films;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS countries;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS genders;
+
+COMMIT;

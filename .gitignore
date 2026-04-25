@@ -1,2 +1,7 @@
 /out
 .env
+copilot-instructions.md
+
+# Logs
+/logs/
+*.log
