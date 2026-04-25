@@ -11,7 +11,8 @@ import (
 
 func main() {
 	// Load .env file
-	_ = godotenv.Load()
+	// Use Overload to ensure values from .env override existing env vars.
+	_ = godotenv.Overload()
 
 	if err := core_logger.Init("logs"); err != nil {
 		panic("failed to init logger: " + err.Error())
