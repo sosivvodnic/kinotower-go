@@ -12,6 +12,7 @@ import (
 	country_handler "github.com/sosivvodnic/kinotower-go/internal/features/countries/handler"
 	film_handler "github.com/sosivvodnic/kinotower-go/internal/features/films/handler"
 	gender_handler "github.com/sosivvodnic/kinotower-go/internal/features/genders/handler"
+	user_rating_handler "github.com/sosivvodnic/kinotower-go/internal/features/user_ratings/handler"
 	user_review_handler "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/handler"
 	user_handler "github.com/sosivvodnic/kinotower-go/internal/features/users/handler"
 )
@@ -25,6 +26,7 @@ type Router struct {
 	genderHandler     gender_handler.GenderHandler
 	userHandler       user_handler.Handler
 	userReviewHandler user_review_handler.Handler
+	userRatingHandler user_rating_handler.Handler
 }
 
 func NewRouter(
@@ -36,6 +38,7 @@ func NewRouter(
 	genderHandler gender_handler.GenderHandler,
 	userHandler user_handler.Handler,
 	userReviewHandler user_review_handler.Handler,
+	userRatingHandler user_rating_handler.Handler,
 ) *Router {
 	return &Router{
 		jwtMgr:            jwtMgr,
@@ -46,6 +49,7 @@ func NewRouter(
 		genderHandler:     genderHandler,
 		userHandler:       userHandler,
 		userReviewHandler: userReviewHandler,
+		userRatingHandler: userRatingHandler,
 	}
 }
 

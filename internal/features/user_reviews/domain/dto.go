@@ -23,4 +23,3 @@ type ReviewResponse struct {
 type ListResponse struct {
 	Reviews []ReviewResponse `json:"reviews"`
 }
-

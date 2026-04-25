@@ -18,6 +18,11 @@ func (r *Router) userRoutes() http.Handler {
 			rr.Get("/", r.userReviewHandler.List)
 			rr.Delete("/{id}", r.userReviewHandler.Delete)
 		})
+		ur.Route("/ratings", func(rt chi.Router) {
+			rt.Post("/", r.userRatingHandler.Create)
+			rt.Get("/", r.userRatingHandler.List)
+			rt.Delete("/{id}", r.userRatingHandler.Delete)
+		})
 	})
 	return router
 }

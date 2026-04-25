@@ -22,6 +22,9 @@ import (
 	gender_handler "github.com/sosivvodnic/kinotower-go/internal/features/genders/handler"
 	gender_repository "github.com/sosivvodnic/kinotower-go/internal/features/genders/repository"
 	gender_service "github.com/sosivvodnic/kinotower-go/internal/features/genders/service"
+	user_rating_handler "github.com/sosivvodnic/kinotower-go/internal/features/user_ratings/handler"
+	user_rating_repository "github.com/sosivvodnic/kinotower-go/internal/features/user_ratings/repository"
+	user_rating_service "github.com/sosivvodnic/kinotower-go/internal/features/user_ratings/service"
 	user_review_handler "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/handler"
 	user_review_repository "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/repository"
 	user_review_service "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/service"
@@ -55,6 +58,10 @@ func NewServer(db core_database.Database) *Server {
 	userReviewSvc := user_review_service.NewService(userReviewRepo)
 	userReviewHandler := user_review_handler.NewHandler(userReviewSvc)
 
+	userRatingRepo := user_rating_repository.NewRepository(db)
+	userRatingSvc := user_rating_service.NewService(userRatingRepo)
+	userRatingHandler := user_rating_handler.NewHandler(userRatingSvc)
+
 	categoryRepository := category_repository.NewCategoryRepository(db)
 	categoryService := category_service.NewCategoryService(categoryRepository)
 	categoryHandler := category_handler.NewCategoryHandler(categoryService)
@@ -67,7 +74,7 @@ func NewServer(db core_database.Database) *Server {
 	genderService := gender_service.NewGenderService(genderRepository)
 	genderHandler := gender_handler.NewGenderHandler(genderService)
 
-	router := core_router.NewRouter(jwtMgr, authHandler, filmHandler, categoryHandler, countryHandler, genderHandler, userHandler, userReviewHandler)
+	router := core_router.NewRouter(jwtMgr, authHandler, filmHandler, categoryHandler, countryHandler, genderHandler, userHandler, userReviewHandler, userRatingHandler)
 
 	return &Server{
 		Server: http.Server{

@@ -129,4 +129,3 @@ func (r *repository) Delete(ctx context.Context, userID int, reviewID int) (bool
 	aff, _ := res.RowsAffected()
 	return aff > 0, nil
 }
-

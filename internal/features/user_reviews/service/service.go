@@ -87,4 +87,3 @@ func (s *service) Delete(ctx context.Context, userID int, reviewID int) error {
 	}
 	return nil
 }
-
