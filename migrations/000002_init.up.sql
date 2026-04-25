@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS users (
     password   VARCHAR(255) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL,
     deleted_at TIMESTAMPTZ NULL,
+    CONSTRAINT uq_users_email UNIQUE (email),
     CONSTRAINT fk_users_gender
         FOREIGN KEY (gender_id) REFERENCES genders(id)
         ON UPDATE CASCADE
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS categories_films (
     id          SERIAL PRIMARY KEY,
     category_id INT NOT NULL,
     film_id     INT NOT NULL,
+    CONSTRAINT uq_categories_films_pair UNIQUE (category_id, film_id),
     CONSTRAINT fk_categories_films_category
         FOREIGN KEY (category_id) REFERENCES categories(id)
         ON UPDATE CASCADE
@@ -114,6 +116,7 @@ CREATE TABLE IF NOT EXISTS ratings (
     user_id    INT NOT NULL,
     ball       INT NOT NULL,
     created_at TIMESTAMPTZ NOT NULL,
+    CONSTRAINT uq_ratings_pair UNIQUE (film_id, user_id),
     CONSTRAINT fk_ratings_film
         FOREIGN KEY (film_id) REFERENCES films(id)
         ON UPDATE CASCADE
@@ -122,7 +125,8 @@ CREATE TABLE IF NOT EXISTS ratings (
         FOREIGN KEY (user_id) REFERENCES users(id)
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
-    CONSTRAINT chk_ratings_ball_unsigned CHECK (ball >= 0)
+    CONSTRAINT chk_ratings_ball_unsigned CHECK (ball >= 0),
+    CONSTRAINT chk_ratings_ball_range CHECK (ball >= 1 AND ball <= 5)
 );
 
 CREATE INDEX IF NOT EXISTS idx_ratings_film_id ON ratings(film_id);

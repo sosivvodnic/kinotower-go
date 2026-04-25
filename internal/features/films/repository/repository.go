@@ -1,8 +1,8 @@
 package film_repository
 
 import (
-	core_database "github.com/Otvetov/kinotower-go/internal/core/database"
-	"github.com/Otvetov/kinotower-go/internal/features/films/domain"
+	core_database "github.com/sosivvodnic/kinotower-go/internal/core/database"
+	"github.com/sosivvodnic/kinotower-go/internal/features/films/domain"
 )
 
 type FilmRepository interface {

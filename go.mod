@@ -1,4 +1,4 @@
-module github.com/Otvetov/kinotower-go
+module github.com/sosivvodnic/kinotower-go
 
 go 1.26.1
 

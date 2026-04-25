@@ -1,9 +1,9 @@
 package main
 
 import (
-	core_database "github.com/Otvetov/kinotower-go/internal/core/database"
-	core_logger "github.com/Otvetov/kinotower-go/internal/core/logger"
-	core_server "github.com/Otvetov/kinotower-go/internal/core/server"
+	core_database "github.com/sosivvodnic/kinotower-go/internal/core/database"
+	core_logger "github.com/sosivvodnic/kinotower-go/internal/core/logger"
+	core_server "github.com/sosivvodnic/kinotower-go/internal/core/server"
 	_ "github.com/lib/pq"
 
 	"github.com/joho/godotenv"

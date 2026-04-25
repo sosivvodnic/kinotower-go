@@ -3,11 +3,11 @@ package core_server
 import (
 	"net/http"
 
-	core_database "github.com/Otvetov/kinotower-go/internal/core/database"
-	core_router "github.com/Otvetov/kinotower-go/internal/core/router"
-	film_handler "github.com/Otvetov/kinotower-go/internal/features/films/handler"
-	film_repository "github.com/Otvetov/kinotower-go/internal/features/films/repository"
-	film_service "github.com/Otvetov/kinotower-go/internal/features/films/service"
+	core_database "github.com/sosivvodnic/kinotower-go/internal/core/database"
+	core_router "github.com/sosivvodnic/kinotower-go/internal/core/router"
+	film_handler "github.com/sosivvodnic/kinotower-go/internal/features/films/handler"
+	film_repository "github.com/sosivvodnic/kinotower-go/internal/features/films/repository"
+	film_service "github.com/sosivvodnic/kinotower-go/internal/features/films/service"
 )
 
 type Server struct {
