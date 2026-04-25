@@ -22,4 +22,3 @@ func NewCountryService(repo country_repository.CountryRepository) *countryServic
 func (s *countryService) List(ctx context.Context) ([]domain.Country, error) {
 	return s.repo.List(ctx)
 }
-

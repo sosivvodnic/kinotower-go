@@ -27,4 +27,3 @@ func (r *genderRepository) List(ctx context.Context) ([]domain.Gender, error) {
 	}
 	return out, nil
 }
-

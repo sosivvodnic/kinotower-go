@@ -22,4 +22,3 @@ func NewCategoryService(repo category_repository.CategoryRepository) *categorySe
 func (s *categoryService) List(ctx context.Context) ([]domain.Category, error) {
 	return s.repo.List(ctx)
 }
-

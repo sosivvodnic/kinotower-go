@@ -15,4 +15,3 @@ type Category struct {
 type ListResponse struct {
 	Categories []Category `json:"categories"`
 }
-

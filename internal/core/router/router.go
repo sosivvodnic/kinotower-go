@@ -5,7 +5,9 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/sosivvodnic/kinotower-go/internal/core/auth"
 	mw "github.com/sosivvodnic/kinotower-go/internal/core/middleware"
+	auth_handler "github.com/sosivvodnic/kinotower-go/internal/features/auth/handler"
 	category_handler "github.com/sosivvodnic/kinotower-go/internal/features/categories/handler"
 	country_handler "github.com/sosivvodnic/kinotower-go/internal/features/countries/handler"
 	film_handler "github.com/sosivvodnic/kinotower-go/internal/features/films/handler"
@@ -13,6 +15,8 @@ import (
 )
 
 type Router struct {
+	jwtMgr          *auth.Manager
+	authHandler     auth_handler.Handler
 	filmHandler     film_handler.FilmHandler
 	categoryHandler category_handler.CategoryHandler
 	countryHandler  country_handler.CountryHandler
@@ -20,12 +24,16 @@ type Router struct {
 }
 
 func NewRouter(
+	jwtMgr *auth.Manager,
+	authHandler auth_handler.Handler,
 	filmHandler film_handler.FilmHandler,
 	categoryHandler category_handler.CategoryHandler,
 	countryHandler country_handler.CountryHandler,
 	genderHandler gender_handler.GenderHandler,
 ) *Router {
 	return &Router{
+		jwtMgr:          jwtMgr,
+		authHandler:     authHandler,
 		filmHandler:     filmHandler,
 		categoryHandler: categoryHandler,
 		countryHandler:  countryHandler,
@@ -48,6 +56,7 @@ func (r *Router) RegisterRoute() http.Handler {
 		rl.Mount("/categories", r.categoryRoutes())
 		rl.Mount("/countries", r.countryRoutes())
 		rl.Mount("/genders", r.genderRoutes())
+		rl.Mount("/auth", r.authRoutes())
 	})
 
 	return router

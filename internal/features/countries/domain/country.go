@@ -9,4 +9,3 @@ type Country struct {
 type ListResponse struct {
 	Countries []Country `json:"countries"`
 }
-

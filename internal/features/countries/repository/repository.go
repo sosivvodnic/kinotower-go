@@ -38,4 +38,3 @@ ORDER BY co.id ASC
 	}
 	return out, nil
 }
-

@@ -28,4 +28,3 @@ func (h *countryHandler) GetCountries(w http.ResponseWriter, r *http.Request) {
 	}
 	httpjson.WriteJSON(w, http.StatusOK, domain.ListResponse{Countries: countries})
 }
-

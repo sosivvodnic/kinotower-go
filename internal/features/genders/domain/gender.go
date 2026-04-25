@@ -8,4 +8,3 @@ type Gender struct {
 type ListResponse struct {
 	Genders []Gender `json:"genders"`
 }
-

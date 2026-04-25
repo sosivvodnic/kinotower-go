@@ -11,4 +11,3 @@ func (r *Router) categoryRoutes() http.Handler {
 	router.Get("/", r.categoryHandler.GetCategories)
 	return router
 }
-

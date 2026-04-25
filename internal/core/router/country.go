@@ -11,4 +11,3 @@ func (r *Router) countryRoutes() http.Handler {
 	router.Get("/", r.countryHandler.GetCountries)
 	return router
 }
-

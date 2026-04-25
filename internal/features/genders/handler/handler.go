@@ -28,4 +28,3 @@ func (h *genderHandler) GetGenders(w http.ResponseWriter, r *http.Request) {
 	}
 	httpjson.WriteJSON(w, http.StatusOK, domain.ListResponse{Genders: genders})
 }
-

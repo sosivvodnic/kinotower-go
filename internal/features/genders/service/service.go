@@ -22,4 +22,3 @@ func NewGenderService(repo gender_repository.GenderRepository) *genderService {
 func (s *genderService) List(ctx context.Context) ([]domain.Gender, error) {
 	return s.repo.List(ctx)
 }
-

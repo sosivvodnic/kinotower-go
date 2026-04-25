@@ -21,11 +21,11 @@ func NewCategoryRepository(db core_database.Database) *categoryRepository {
 }
 
 type categoryRow struct {
-	ID         int    `db:"id"`
-	Name       string `db:"name"`
-	ParentID   *int   `db:"parent_id"`
+	ID         int     `db:"id"`
+	Name       string  `db:"name"`
+	ParentID   *int    `db:"parent_id"`
 	ParentName *string `db:"parent_name"`
-	FilmCount  int    `db:"film_count"`
+	FilmCount  int     `db:"film_count"`
 }
 
 func (r *categoryRepository) List(ctx context.Context) ([]domain.Category, error) {
@@ -65,4 +65,3 @@ ORDER BY c.id ASC
 	}
 	return out, nil
 }
-

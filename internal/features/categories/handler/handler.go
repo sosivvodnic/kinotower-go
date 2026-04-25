@@ -28,4 +28,3 @@ func (h *categoryHandler) GetCategories(w http.ResponseWriter, r *http.Request) 
 	}
 	httpjson.WriteJSON(w, http.StatusOK, domain.ListResponse{Categories: cats})
 }
-
