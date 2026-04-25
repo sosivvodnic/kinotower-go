@@ -22,6 +22,9 @@ import (
 	gender_handler "github.com/sosivvodnic/kinotower-go/internal/features/genders/handler"
 	gender_repository "github.com/sosivvodnic/kinotower-go/internal/features/genders/repository"
 	gender_service "github.com/sosivvodnic/kinotower-go/internal/features/genders/service"
+	user_review_handler "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/handler"
+	user_review_repository "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/repository"
+	user_review_service "github.com/sosivvodnic/kinotower-go/internal/features/user_reviews/service"
 	user_handler "github.com/sosivvodnic/kinotower-go/internal/features/users/handler"
 	user_repository "github.com/sosivvodnic/kinotower-go/internal/features/users/repository"
 	user_service "github.com/sosivvodnic/kinotower-go/internal/features/users/service"
@@ -48,6 +51,10 @@ func NewServer(db core_database.Database) *Server {
 	userSvc := user_service.NewService(userRepo)
 	userHandler := user_handler.NewHandler(userSvc)
 
+	userReviewRepo := user_review_repository.NewRepository(db)
+	userReviewSvc := user_review_service.NewService(userReviewRepo)
+	userReviewHandler := user_review_handler.NewHandler(userReviewSvc)
+
 	categoryRepository := category_repository.NewCategoryRepository(db)
 	categoryService := category_service.NewCategoryService(categoryRepository)
 	categoryHandler := category_handler.NewCategoryHandler(categoryService)
@@ -60,7 +67,7 @@ func NewServer(db core_database.Database) *Server {
 	genderService := gender_service.NewGenderService(genderRepository)
 	genderHandler := gender_handler.NewGenderHandler(genderService)
 
-	router := core_router.NewRouter(jwtMgr, authHandler, filmHandler, categoryHandler, countryHandler, genderHandler, userHandler)
+	router := core_router.NewRouter(jwtMgr, authHandler, filmHandler, categoryHandler, countryHandler, genderHandler, userHandler, userReviewHandler)
 
 	return &Server{
 		Server: http.Server{

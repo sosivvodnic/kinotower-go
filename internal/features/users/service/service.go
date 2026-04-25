@@ -56,4 +56,3 @@ func (s *service) UpdateUser(ctx context.Context, id int, req domain.UpdateUserR
 func (s *service) DeleteUser(ctx context.Context, id int) error {
 	return s.repo.SoftDeleteUser(ctx, id)
 }
-

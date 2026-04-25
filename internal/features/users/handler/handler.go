@@ -91,4 +91,3 @@ func (h *handler) DeleteMe(w http.ResponseWriter, r *http.Request) {
 	// 204 without JSON is allowed by spec
 	w.WriteHeader(http.StatusNoContent)
 }
-

@@ -80,4 +80,3 @@ func (r *repository) SoftDeleteUser(ctx context.Context, id int) error {
 	}
 	return nil
 }
-

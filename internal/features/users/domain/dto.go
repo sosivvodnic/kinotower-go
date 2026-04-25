@@ -6,13 +6,13 @@ type Gender struct {
 }
 
 type UserResponse struct {
-	ID          int              `json:"id" db:"id"`
-	FIO         string           `json:"fio" db:"fio"`
-	Email       string           `json:"email" db:"email"`
-	Birthday    *string          `json:"birthday" db:"birthday"` // yyyy-mm-dd
-	Gender      Gender           `json:"gender"`
-	ReviewCount int              `json:"reviewCount" db:"review_count"`
-	RatingCount int              `json:"ratingCount" db:"rating_count"`
+	ID          int     `json:"id" db:"id"`
+	FIO         string  `json:"fio" db:"fio"`
+	Email       string  `json:"email" db:"email"`
+	Birthday    *string `json:"birthday" db:"birthday"` // yyyy-mm-dd
+	Gender      Gender  `json:"gender"`
+	ReviewCount int     `json:"reviewCount" db:"review_count"`
+	RatingCount int     `json:"ratingCount" db:"rating_count"`
 }
 
 type UpdateUserRequest struct {
@@ -21,4 +21,3 @@ type UpdateUserRequest struct {
 	Birthday string `json:"birthday"`
 	GenderID int    `json:"gender_id"`
 }
-
