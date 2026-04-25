@@ -17,4 +17,3 @@ func (t ISOTime) MarshalJSON() ([]byte, error) {
 	s := t.Time.UTC().Format("2006-01-02T15:04:05.000Z")
 	return []byte(`"` + s + `"`), nil
 }
-

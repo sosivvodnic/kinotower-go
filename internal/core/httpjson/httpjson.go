@@ -20,4 +20,3 @@ type ErrorResponse struct {
 func WriteError(w http.ResponseWriter, status int, message string) {
 	WriteJSON(w, status, ErrorResponse{Message: message})
 }
-

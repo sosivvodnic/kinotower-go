@@ -17,4 +17,3 @@ func (s *filmService) GetApprovedReviewsByFilmID(ctx context.Context, filmID int
 func (s *filmService) FilmExists(ctx context.Context, filmID int) (bool, error) {
 	return s.filmRepository.FilmExists(ctx, filmID)
 }
-

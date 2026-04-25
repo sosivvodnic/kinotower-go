@@ -59,4 +59,3 @@ func (r *filmRepository) FilmExists(ctx context.Context, filmID int) (bool, erro
 	}
 	return cnt > 0, nil
 }
-

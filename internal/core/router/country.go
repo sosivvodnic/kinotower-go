@@ -6,9 +6,9 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func (r *Router) genderRoutes() http.Handler {
+func (r *Router) countryRoutes() http.Handler {
 	router := chi.NewRouter()
-	router.Get("/", r.genderHandler.GetGenders)
-
+	router.Get("/", r.countryHandler.GetCountries)
 	return router
 }
+

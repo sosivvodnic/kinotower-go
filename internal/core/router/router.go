@@ -6,16 +6,30 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	mw "github.com/sosivvodnic/kinotower-go/internal/core/middleware"
+	category_handler "github.com/sosivvodnic/kinotower-go/internal/features/categories/handler"
+	country_handler "github.com/sosivvodnic/kinotower-go/internal/features/countries/handler"
 	film_handler "github.com/sosivvodnic/kinotower-go/internal/features/films/handler"
+	gender_handler "github.com/sosivvodnic/kinotower-go/internal/features/genders/handler"
 )
 
 type Router struct {
-	filmHandler film_handler.FilmHandler
+	filmHandler     film_handler.FilmHandler
+	categoryHandler category_handler.CategoryHandler
+	countryHandler  country_handler.CountryHandler
+	genderHandler   gender_handler.GenderHandler
 }
 
-func NewRouter(filmHandler film_handler.FilmHandler) *Router {
+func NewRouter(
+	filmHandler film_handler.FilmHandler,
+	categoryHandler category_handler.CategoryHandler,
+	countryHandler country_handler.CountryHandler,
+	genderHandler gender_handler.GenderHandler,
+) *Router {
 	return &Router{
-		filmHandler: filmHandler,
+		filmHandler:     filmHandler,
+		categoryHandler: categoryHandler,
+		countryHandler:  countryHandler,
+		genderHandler:   genderHandler,
 	}
 }
 
@@ -31,6 +45,8 @@ func (r *Router) RegisterRoute() http.Handler {
 			w.Write([]byte("Hello, World!"))
 		})
 		rl.Mount("/films", r.filmRoutes())
+		rl.Mount("/categories", r.categoryRoutes())
+		rl.Mount("/countries", r.countryRoutes())
 		rl.Mount("/genders", r.genderRoutes())
 	})
 
