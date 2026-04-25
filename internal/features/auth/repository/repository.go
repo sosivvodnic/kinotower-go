@@ -10,13 +10,13 @@ import (
 )
 
 type User struct {
-	ID        int       `db:"id"`
-	FIO       string    `db:"fio"`
-	Email     string    `db:"email"`
-	Password  string    `db:"password"`
+	ID        int        `db:"id"`
+	FIO       string     `db:"fio"`
+	Email     string     `db:"email"`
+	Password  string     `db:"password"`
 	Birthday  *time.Time `db:"birthday"`
-	GenderID  int       `db:"gender_id"`
-	CreatedAt time.Time `db:"created_at"`
+	GenderID  int        `db:"gender_id"`
+	CreatedAt time.Time  `db:"created_at"`
 	DeletedAt *time.Time `db:"deleted_at"`
 }
 
@@ -63,4 +63,3 @@ LIMIT 1
 	}
 	return &u, nil
 }
-

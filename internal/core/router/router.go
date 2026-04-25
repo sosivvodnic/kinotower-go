@@ -12,6 +12,7 @@ import (
 	country_handler "github.com/sosivvodnic/kinotower-go/internal/features/countries/handler"
 	film_handler "github.com/sosivvodnic/kinotower-go/internal/features/films/handler"
 	gender_handler "github.com/sosivvodnic/kinotower-go/internal/features/genders/handler"
+	user_handler "github.com/sosivvodnic/kinotower-go/internal/features/users/handler"
 )
 
 type Router struct {
@@ -21,6 +22,7 @@ type Router struct {
 	categoryHandler category_handler.CategoryHandler
 	countryHandler  country_handler.CountryHandler
 	genderHandler   gender_handler.GenderHandler
+	userHandler     user_handler.Handler
 }
 
 func NewRouter(
@@ -30,6 +32,7 @@ func NewRouter(
 	categoryHandler category_handler.CategoryHandler,
 	countryHandler country_handler.CountryHandler,
 	genderHandler gender_handler.GenderHandler,
+	userHandler user_handler.Handler,
 ) *Router {
 	return &Router{
 		jwtMgr:          jwtMgr,
@@ -38,6 +41,7 @@ func NewRouter(
 		categoryHandler: categoryHandler,
 		countryHandler:  countryHandler,
 		genderHandler:   genderHandler,
+		userHandler:     userHandler,
 	}
 }
 
@@ -57,6 +61,9 @@ func (r *Router) RegisterRoute() http.Handler {
 		rl.Mount("/countries", r.countryRoutes())
 		rl.Mount("/genders", r.genderRoutes())
 		rl.Mount("/auth", r.authRoutes())
+
+		// closed endpoints
+		rl.With(mw.RequireAuth(r.jwtMgr)).Mount("/users", r.userRoutes())
 	})
 
 	return router

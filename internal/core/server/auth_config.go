@@ -25,4 +25,3 @@ func NewAuthConfigMust() *AuthConfig {
 	}
 	return cfg
 }
-

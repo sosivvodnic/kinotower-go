@@ -112,4 +112,3 @@ func authHeaderClaims(m *auth.Manager, h string) (*auth.Claims, error) {
 	}
 	return m.Parse(h[len(pfx):])
 }
-

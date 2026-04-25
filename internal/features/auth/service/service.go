@@ -88,4 +88,3 @@ func (s *service) SignIn(ctx context.Context, email, password string) (string, i
 	}
 	return token, u.ID, u.FIO, jti, exp, nil
 }
-

@@ -44,4 +44,3 @@ func RequireAuth(mgr *auth.Manager) func(http.Handler) http.Handler {
 		})
 	}
 }
-

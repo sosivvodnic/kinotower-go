@@ -10,8 +10,8 @@ import (
 )
 
 type Manager struct {
-	Secret    []byte
-	TokenTTL  time.Duration
+	Secret     []byte
+	TokenTTL   time.Duration
 	revokedJTI map[string]time.Time
 }
 
@@ -98,4 +98,3 @@ func randomHex(nBytes int) (string, error) {
 	}
 	return hex.EncodeToString(b), nil
 }
-
